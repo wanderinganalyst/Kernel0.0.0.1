@@ -1,1 +1,1 @@
-Currently going through a Udemy course learning how to build a kernel. Nothing special or original here just learning.
+Currently going through a Udemy course learning how to build a kernel. Nothing special or original here just learning. Hoping to be done by the end of December.
