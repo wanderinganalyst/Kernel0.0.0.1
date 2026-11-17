@@ -4,7 +4,6 @@ BITS 16
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
 
-
 _start:
 	jmp short start
 	nop
@@ -32,19 +31,18 @@ step2:
 	jmp CODE_SEG:load32
 
 
-
-
 gdt_start:
 gdt_null:
 	dd 0x0
 	dd 0x0
+
 
 gdt_code:
 	dw 0xffff
 	dw 0
 	db 0
 	db 0x9a
-	db 1100111b
+	db 11001111b
 	db 0
 
 gdt_data:
@@ -52,7 +50,7 @@ gdt_data:
 	dw 0
 	db 0
 	db 0x92
-	db 1100111b
+	db 11001111b
 	db 0
 
 gdt_end:
@@ -69,8 +67,12 @@ load32:
 	mov fs, ax
 	mov gs, ax
 	mov ss, ax
-	move ebp, 0x200000
+	mov ebp, 0x00200000
 	mov esp, ebp
+
+	in al, 0x92
+	or al, 2
+	out 0x92, al
 	jmp $
 
 
